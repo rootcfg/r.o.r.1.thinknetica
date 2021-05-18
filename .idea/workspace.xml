@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da99aab8-520d-4d39-a588-e48fb350527c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/iterators/basket.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/iterators/days_from.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/iterators/fibbonachi.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/iterators/monthes.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/iterators/range.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/iterators/vowels.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iterators/days_from.rb" beforeDir="false" afterPath="$PROJECT_DIR$/iterators/days_from.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +42,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1621265538069</updated>
-      <workItem from="1621265539322" duration="6677000" />
+      <workItem from="1621265539322" duration="7746000" />
     </task>
     <servers />
   </component>
