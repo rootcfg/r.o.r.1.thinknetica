@@ -1,0 +1,17 @@
+class CargoTrain < Train
+
+  attr_reader :max_tonnage
+
+  def initialize(name, type = :cargo)
+    super(name, type)
+    @max_tonnage = max_tonnage
+  end
+
+  def increase_wagons(wagon)
+    super(wagon) if wagon.instance_of?(CargoWagon)
+  end
+
+  def decrease_wagons(wagon)
+    super(wagon)
+  end
+end

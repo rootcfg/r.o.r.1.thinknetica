@@ -1,23 +1,24 @@
 class Train
 
-  attr_accessor :number
-  attr_reader :speed, :wagons, :type, :route, :current_station
+  attr_accessor :number, :name
+  attr_reader :max_speed, :current_speed, :wagons, :type, :route, :current_station
 
-  def initialize(number, type, wagons)
+  def initialize(number, type)
     @number = number
     @type = type
-    @speed = 0
-    @route
-    @wagons = wagons
+    @current_speed = 0
+    @wagons = []
   end
 
   def change_speed(speed)
-    (@speed..speed).step(1).each { |step| @speed = step } if speed.positive? || speed == 0
-    @speed
+    if speed.positive?  && speed >= 0
+      (@current_speed..speed).each { |step| @current_speed = step }
+    end
+    @current_speed
   end
 
   def extra_stop
-    @speed = 0
+    @current_speed = 0
   end
 
   def make_route(route)
@@ -27,14 +28,6 @@ class Train
       @current_station.arrival(self)
     end
     @route.stations
-  end
-
-  def increase_wagons
-    @wagons += 1 if @speed == 0
-  end
-
-  def decrease_wagons
-    @wagons -= 1 if @wagons >= 1
   end
 
   def next_station
@@ -59,6 +52,16 @@ class Train
   def backward_movement
     @current_station.departure(self)
     @current_station = self.previous_station
+  end
+
+  protected
+
+  def increase_wagons(wagon)
+    @wagons.push(wagon) if !@wagons.include?(wagon)
+  end
+
+  def decrease_wagons(wagon)
+    @wagons.delete(wagon)
   end
 
 end

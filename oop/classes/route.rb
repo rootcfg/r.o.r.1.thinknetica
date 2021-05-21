@@ -1,6 +1,6 @@
 class Route
 
-  attr_reader :stations
+  attr_reader :stations, :name
 
   def initialize(begin_station, end_station)
     @stations = []
@@ -8,7 +8,7 @@ class Route
   end
 
   def add_station(station)
-    if not  @stations.include? station
+    if  !@stations.include? station
       @stations.insert(-2, station)
     end
   end
@@ -28,7 +28,9 @@ class Route
   end
 
   def define_route(begin_station, end_station)
-    @stations << begin_station << end_station if begin_station.instance_of?(Station) && end_station.instance_of?(Station)
+    @stations << begin_station if begin_station.instance_of?(Station)
+    @stations << end_station if end_station.instance_of?(Station)
+    @name = "\"#{begin_station.name} - #{end_station.name}\""
   end
 
 end
