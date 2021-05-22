@@ -2,16 +2,16 @@ require_relative './classes/main'
 
 class Interface
   MENU = {
-    'm1' => 'Create Station',
-    'm2' => 'Create Train',
-    'm3' => 'Create Route',
-    'm4' => 'Manage Route',
-    'm5' => 'Add wagons to train',
-    'm6' => 'Remove wagons',
-    'm7' => 'All station and trains on them',
-    'm8' => 'Create wagon',
-    'm9' => 'Add route to train',
-    'm0' => 'Exit'
+    m1: 'Create Station',
+    m2: 'Create Train',
+    m3: 'Create Route',
+    m4: 'Manage Route',
+    m5: 'Add wagons to train',
+    m6: 'Remove wagons',
+    m7: 'All station and trains on them',
+    m8: 'Create wagon',
+    m9: 'Add route to train',
+    m10: 'Exit'
   }.freeze
 
   def initialize
