@@ -1,10 +1,12 @@
 class Route
 
+  include InstancesCounter
   attr_reader :stations, :name
 
   def initialize(begin_station, end_station)
     @stations = []
     define_route(begin_station, end_station)
+    new_instance
   end
 
   def add_station(station)
