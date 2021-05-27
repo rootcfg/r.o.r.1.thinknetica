@@ -1,5 +1,6 @@
 require 'colorize'
 require_relative 'instances_counter'
+require_relative 'company'
 require_relative 'route'
 require_relative 'station'
 require_relative 'train'

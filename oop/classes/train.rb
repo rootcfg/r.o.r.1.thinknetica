@@ -1,6 +1,8 @@
 class Train
-
+  
+  include Company
   include InstancesCounter
+  
   attr_accessor :number, :name
   attr_reader :max_speed, :current_speed, :wagons, :type, :route, :current_station
 
@@ -12,10 +14,10 @@ class Train
     @current_speed = 0
     @wagons = []
     @@all_trains[number] = self
-    new_instance
+    register_instance
   end
 
-  def self.find_by_label(number)
+  def self.find(number)
     @@all_trains[number]
   end
 

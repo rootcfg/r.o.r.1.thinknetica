@@ -19,7 +19,7 @@ module InstancesCounter
   module InstanceMethods
     private
 
-    def new_instance
+    def register_instance
       self.class.instance_increase
     end
   end

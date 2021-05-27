@@ -14,7 +14,7 @@ class Station
     new_instance
   end
 
-  def self.all_stations
+  def self.all
     @@all_stations
   end
 

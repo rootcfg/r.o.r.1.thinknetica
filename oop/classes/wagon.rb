@@ -1,5 +1,7 @@
 class Wagon
 
+  include Company
+
   attr_accessor :number, :weight, :color
   attr_reader :empty_weight, :max_weight, :max_speed
 
