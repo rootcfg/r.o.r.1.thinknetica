@@ -6,6 +6,8 @@ class Train
   attr_accessor :number, :name
   attr_reader :max_speed, :current_speed, :wagons, :type, :route, :current_station
 
+  NUMBER_FORMAT = /^(\w|\d){3}[-]?(\w|\d){2}$/i
+
   @@all_trains = {}
 
   def initialize(number, type)
@@ -13,6 +15,7 @@ class Train
     @type = type
     @current_speed = 0
     @wagons = []
+    validate!
     @@all_trains[number] = self
     register_instance
   end
@@ -65,7 +68,19 @@ class Train
     @current_station = self.previous_station
   end
 
+  def valid?
+    validate!
+    true
+  rescue
+    false
+  end
+
   protected
+
+  def validate!
+    raise 'Number format exception' unless @number =~ NUMBER_FORMAT
+    raise 'Blank number exception' if @number.empty?
+  end
 
   def increase_wagons(wagon)
     @wagons.push(wagon) if !@wagons.include?(wagon)

@@ -66,6 +66,9 @@ class Interface
         redo
       when :m9
         add_route_to_train
+      when :m10
+        puts "Goodluck! Comeback again!"
+        exit
       else
         puts 'Your choise is incorrect! Try again!'
         redo
@@ -108,20 +111,24 @@ class Interface
   end
 
   def create_route
-    if @stations.size < 2
-      puts 'You need create more than one station. Route must have start and final station!'.red
-    else
-      puts 'Stations list:'.blue
-      @stations.each_with_index do |station, index|
-        puts " #{station.name} : #{index} "
-        station.trains.each { |train| puts train.name.to_s }
+    begin
+      if @stations.size < 2
+        puts 'You need create more than one station. Route must have start and final station!'.red
+      else
+        puts 'Stations list:'.blue
+        @stations.each_with_index do |station, index|
+          puts " #{station.name} : #{index} "
+          station.trains.each { |train| puts train.name.to_s }
+        end
+        print 'Please choise start station. Example: (1)'.blue
+        start_station = gets.chomp!.to_i
+        print 'Please choise final station. Example: (5)'.blue
+        final_station = gets.chomp!.to_i
+        @route << Route.new(@stations[start_station], @stations[final_station])
+        print 'New route successfully created'.green
       end
-      print 'Please choise start station. Example: (1)'.blue
-      start_station = gets.chomp!.to_i
-      print 'Please choise final station. Example: (5)'.blue
-      final_station = gets.chomp!.to_i
-      @route << Route.new(@stations[start_station], @stations[final_station])
-      print 'New route successfully created'.green
+    rescue StandardError => e
+      puts e.message
     end
   end
 
@@ -133,34 +140,38 @@ class Interface
   end
 
   def manage_route
-    if @route.empty?
-      puts 'Please create route!'.red
-    else
-      @route.each_with_index do |val, index|
-        puts "* #{index} : #{val.name}"
-      end
-      puts 'Please select action:'.blue
-      puts 'm1. delete station'.red
-      puts 'm2. add station'.blue
-      choise = gets.chomp!.to_sym
-      if choise == :m1
-        puts 'select station for deletion: '.blue
-        @route[0].stations
-        station_for_deletion = gets.chomp!.to_sym
-        puts 'Current station deleted successfully'.green if @route[0].remove_station(station_for_deletion)
-      elsif choise == :m2
-        puts 'Please choose station for include'.blue
-        @stations.each_with_index do |st, index|
-          puts "#{index}.   #{st.name}" unless @route.include?(@stations[index])
+    begin
+      if @route.empty?
+        puts 'Please create route!'.red
+      else
+        @route.each_with_index do |val, index|
+          puts "* #{index} : #{val.name}"
         end
-        st_to_add = gets.chomp!.to_i
-        if @route.include?(@stations[st_to_add])
-          puts 'This station is already included, please choose anather one!'.red
-        else
-          @route << @stations[st_to_add]
-          puts 'New station added to route successfully'.green
+        puts 'Please select action:'.blue
+        puts 'm1. delete station'.red
+        puts 'm2. add station'.blue
+        choise = gets.chomp!.to_sym
+        if choise == :m1
+          puts 'select station for deletion: '.blue
+          @route[0].stations
+          station_for_deletion = gets.chomp!.to_sym
+          puts 'Current station deleted successfully'.green if @route[0].remove_station(station_for_deletion)
+        elsif choise == :m2
+          puts 'Please choose station for include'.blue
+          @stations.each_with_index do |st, index|
+            puts "#{index}.   #{st.name}" unless @route.include?(@stations[index])
+          end
+          st_to_add = gets.chomp!.to_i
+          if @route.include?(@stations[st_to_add])
+            puts 'This station is already included, please choose anather one!'.red
+          else
+            @route << @stations[st_to_add]
+            puts 'New station added to route successfully'.green
+          end
         end
       end
+    rescue StandardError => e
+      puts e.message
     end
   end
 

@@ -10,8 +10,9 @@ class Station
   def initialize(name)
     @name = name
     @trains = []
-    @@all_station << self
-    new_instance
+    @@all_stations << self
+    validate!
+    register_instance
   end
 
   def self.all
@@ -28,6 +29,20 @@ class Station
 
   def trains_by_type(type)
     @trains.select {|train| train.type == type }
+  end
+
+  def valid?
+    validate!
+    true
+  rescue
+    false
+  end
+
+  private
+
+  def validate!
+    raise "Name can't be blank" if @name.empty?
+    raise 'Name too short! Please fiil more than 1 symbols.' if @name.length <= 2
   end
 
 end
