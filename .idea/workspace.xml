@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da99aab8-520d-4d39-a588-e48fb350527c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oop/classes/logger.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oop/classes/cargo_train.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/cargo_train.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oop/classes/cargo_wagon.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/cargo_wagon.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oop/classes/main.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/main.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oop/classes/passenger_wagon.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/passenger_wagon.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oop/classes/route.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/route.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oop/classes/station.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/station.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oop/classes/train.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/train.rb" afterDir="false" />
@@ -58,7 +64,7 @@
       <option name="presentableId" value="Default" />
       <updated>1621265538069</updated>
       <workItem from="1621265539322" duration="52224000" />
-      <workItem from="1622018108675" duration="16742000" />
+      <workItem from="1622018108675" duration="30210000" />
     </task>
     <task id="LOCAL-00001" summary="New syntax style correction">
       <created>1621664767630</created>
@@ -74,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622112097018</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add some exceptions + validations">
+      <created>1622280186290</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1622280186290</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -83,6 +96,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="New syntax style correction" />
-    <option name="LAST_COMMIT_MESSAGE" value="New syntax style correction" />
+    <MESSAGE value="Add some exceptions + validations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add some exceptions + validations" />
   </component>
 </project>

@@ -68,6 +68,10 @@ class Train
     @current_station = self.previous_station
   end
 
+  def show_me_wagons
+    @wagons.each { |wagon| yield(wagon) }
+  end
+
   def valid?
     validate!
     true
@@ -78,8 +82,13 @@ class Train
   protected
 
   def validate!
-    raise 'Number format exception' unless @number =~ NUMBER_FORMAT
-    raise 'Blank number exception' if @number.empty?
+    errors = []
+
+    errors << "Номер  не может быть пустым" if @number.length.zero?
+    errors << "Номер  должен иметь минимум 6 символов" if @number.length < 6
+    errors << "Неверный формат номера " if @number !~ NUMBER_FORMAT
+
+    raise errors.join(". ") if !errors.empty?
   end
 
   def increase_wagons(wagon)

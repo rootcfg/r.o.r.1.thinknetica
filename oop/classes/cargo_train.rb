@@ -2,7 +2,7 @@ class CargoTrain < Train
 
   attr_reader :max_tonnage
 
-  def initialize(name, type = :cargo)
+  def initialize(name, type = :platform)
     super(name, type)
     @max_tonnage = max_tonnage
   end

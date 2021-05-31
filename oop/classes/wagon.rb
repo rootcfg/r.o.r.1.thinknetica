@@ -22,8 +22,13 @@ class Wagon
   private
 
   def validate!
-    raise 'Number can`t be blank' if @number.empty?
-    raise 'Number format is incorrect' unless @number =~ NUMBER_FORMAT
+    errors = []
+
+    errors << "Number can`t be blank`" if @number.to_s.empty?
+    errors << "Number must be greather than 3" if @number.to_s.length < 3
+    errors << "Number format is incorrect" if @number !~ NUMBER_FORMAT
+
+    raise errors.join(". ") if !errors.empty?
   end
 
 end

@@ -1,7 +1,7 @@
 class Station
 
   include InstancesCounter
-
+  
   attr_accessor :name
   attr_reader :trains
 
@@ -10,8 +10,8 @@ class Station
   def initialize(name)
     @name = name
     @trains = []
-    @@all_stations << self
     validate!
+    @@all_stations << self
     register_instance
   end
 
@@ -20,7 +20,7 @@ class Station
   end
 
   def arrival(train)
-    @trains << train if train.instance_of?(Train)
+    @trains << train if train.kind_of?(Train)
   end
 
   def departure(train)
@@ -38,11 +38,19 @@ class Station
     false
   end
 
-  private
+  def block_trains
+    @trains.each { |train| yield(train) }
+  end
 
+  private
+  
   def validate!
-    raise "Name can't be blank" if @name.empty?
-    raise 'Name too short! Please fiil more than 1 symbols.' if @name.length <= 2
+    errors = []
+
+    errors << "Название  не может быть пустым" if @name.length.zero?
+    errors << "Название  должно иметь минимум 5 символов" if @name.length < 5
+    
+    raise errors.join(". ") if !errors.empty?
   end
 
 end

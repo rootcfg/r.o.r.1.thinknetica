@@ -1,6 +1,9 @@
 require_relative './classes/main'
 
 class Interface
+  
+  include Logger
+  
   MENU = {
     m1: 'Create Station',
     m2: 'Create Train',
@@ -78,6 +81,13 @@ class Interface
 
   private
 
+  def all_station_with_trains
+    @stations.each do |st|
+      puts "* #{st.name}"
+        st.trains.each { |train| puts train.name.to_s + ' ' + train.type.to_s + ' ' + train.wagons.size }
+    end
+  end
+
   def create_station
     print 'Please enter the station name: '.blue
     station = gets.chomp!
@@ -85,6 +95,7 @@ class Interface
       st = Station.new(station)
       @stations << st
       puts "Station #{st.name.yellow} successfully created!".green
+      log("Station #{st.name} was created", "#{self.class}")
     rescue StandardError => e
       puts e.message
     end

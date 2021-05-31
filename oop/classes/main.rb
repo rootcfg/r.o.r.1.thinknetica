@@ -1,4 +1,6 @@
 require 'colorize'
+require 'elasticsearch'
+require_relative 'logger'
 require_relative 'instances_counter'
 require_relative 'company'
 require_relative 'route'
