@@ -27,11 +27,11 @@ class Route
   end
 
   def begin_station
-    stations.first
+    @stations.first
   end
 
   def end_station
-    stations.last
+    @stations.last
   end
 
   def define_route(begin_station, end_station)

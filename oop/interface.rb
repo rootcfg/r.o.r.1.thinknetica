@@ -223,8 +223,8 @@ class Interface
   end
 
   def show_trains_list(trains)
-    train_type = trains == :m1 ? @trains.select { |train| train.instance_of? PassengerTrain } : @trains.select { |train| train.instance_of? CargoTrain }
-    train_type.each_with_index { |train, index| puts "#{index} : #{train.number}" }
+    train_type = trains.to_sym == :m1 ? @trains.select { |train| train.instance_of? PassengerTrain } : @trains.select { |train| train.instance_of? CargoTrain }
+    train_type.each_with_index { |train, index| puts "#{index}: #{train.number}" }
     puts 'Choose the train: '.blue
     train = gets.chomp!.to_i
     train_type[train]
@@ -261,8 +261,8 @@ class Interface
     puts 'Please select the route'
     @route.each_with_index { |route, index| puts "#{index} : #{route}" }
     route = gets.chomp!
-    route = @route[route]
-    train.take_route route
+    route = @route[route.to_i]
+    train.make_route route
   end
 
   def move_train_forward
