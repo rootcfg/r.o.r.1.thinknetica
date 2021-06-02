@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 class Train
-  
   include Company
   include InstancesCounter
-  
+
   attr_accessor :number, :name
   attr_reader :max_speed, :current_speed, :wagons, :type, :route, :current_station
 
-  NUMBER_FORMAT = /^(\w|\d){3}[-]?(\w|\d){2}$/i
+  NUMBER_FORMAT = /^(\w|\d){3}-?(\w|\d){2}$/i.freeze
 
   @@all_trains = {}
 
@@ -25,9 +26,7 @@ class Train
   end
 
   def change_speed(speed)
-    if speed.positive?  && speed >= 0
-      (@current_speed..speed).each { |step| @current_speed = step }
-    end
+    (@current_speed..speed).each { |step| @current_speed = step } if speed.positive? && speed >= 0
     @current_speed
   end
 
@@ -46,36 +45,32 @@ class Train
 
   def next_station
     current_station = @route.stations.index @current_station
-    if current_station < @route.stations.size
-      @route.stations[current_station += 1]
-    end
+    @route.stations[current_station += 1] if current_station < @route.stations.size
   end
 
   def previous_station
     current_station = @route.stations.index @current_station
-    if current_station < @route.stations.size
-      @route.stations[current_station -= 1]
-    end
+    @route.stations[current_station -= 1] if current_station < @route.stations.size
   end
 
   def forward_movement
     @current_station.arrival(self)
-    @current_station = self.next_station
+    @current_station = next_station
   end
 
   def backward_movement
     @current_station.departure(self)
-    @current_station = self.previous_station
+    @current_station = previous_station
   end
 
-  def show_me_wagons
-    @wagons.each { |wagon| yield(wagon) }
+  def show_me_wagons(&block)
+    @wagons.each(&block)
   end
 
   def valid?
     validate!
     true
-  rescue
+  rescue StandardError
     false
   end
 
@@ -84,19 +79,18 @@ class Train
   def validate!
     errors = []
 
-    errors << "Номер  не может быть пустым" if @number.length.zero?
-    errors << "Номер  должен иметь минимум 6 символов" if @number.length < 6
-    errors << "Неверный формат номера " if @number !~ NUMBER_FORMAT
+    errors << 'Номер  не может быть пустым' if @number.length.zero?
+    errors << 'Номер  должен иметь минимум 6 символов' if @number.length < 6
+    errors << 'Неверный формат номера ' if @number !~ NUMBER_FORMAT
 
-    raise errors.join(". ") if !errors.empty?
+    raise errors.join('. ') unless errors.empty?
   end
 
   def increase_wagons(wagon)
-    @wagons.push(wagon) if !@wagons.include?(wagon)
+    @wagons.push(wagon) unless @wagons.include?(wagon)
   end
 
   def decrease_wagons(wagon)
     @wagons.delete(wagon)
   end
-
 end

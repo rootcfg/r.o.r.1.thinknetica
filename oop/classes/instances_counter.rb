@@ -1,5 +1,6 @@
-module InstancesCounter
+# frozen_string_literal: true
 
+module InstancesCounter
   def self.included(base)
     base.extend ClassMethods
     base.include InstanceMethods

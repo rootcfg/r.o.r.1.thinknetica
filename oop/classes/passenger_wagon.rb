@@ -1,5 +1,6 @@
-class PassangerWagon < Wagon
+# frozen_string_literal: true
 
+class PassangerWagon < Wagon
   attr_accessor :number
   attr_reader :seats, :passengers, :type
 
@@ -17,5 +18,4 @@ class PassangerWagon < Wagon
   def occupies_seats
     @all_seats - @seats
   end
-
 end

@@ -1,5 +1,6 @@
-class CargoWagon < Wagon
+# frozen_string_literal: true
 
+class CargoWagon < Wagon
   attr_accessor :number
   attr_reader :type, :max_tonnage
 
@@ -11,9 +12,9 @@ class CargoWagon < Wagon
 
   def available_tonnage
     if @max_tonnage != @tonnage
-       @max_tonnage - @tonnage
+      @max_tonnage - @tonnage
     else
-       @tonnage
+      @tonnage
     end
   end
 
@@ -24,5 +25,4 @@ class CargoWagon < Wagon
   def decrise_tonnage(val)
     tonnage = @tonnage.positive? ? @tonnage -= val : raise('Can`t decrise tonnage!')
   end
-
 end

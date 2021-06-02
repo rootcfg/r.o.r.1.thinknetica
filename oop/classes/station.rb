@@ -1,7 +1,8 @@
-class Station
+# frozen_string_literal: true
 
+class Station
   include InstancesCounter
-  
+
   attr_accessor :name
   attr_reader :trains
 
@@ -20,7 +21,7 @@ class Station
   end
 
   def arrival(train)
-    @trains << train if train.kind_of?(Train)
+    @trains << train if train.is_a?(Train)
   end
 
   def departure(train)
@@ -28,29 +29,28 @@ class Station
   end
 
   def trains_by_type(type)
-    @trains.select {|train| train.type == type }
+    @trains.select { |train| train.type == type }
   end
 
   def valid?
     validate!
     true
-  rescue
+  rescue StandardError
     false
   end
 
-  def block_trains
-    @trains.each { |train| yield(train) }
+  def block_trains(&block)
+    @trains.each(&block)
   end
 
   private
-  
+
   def validate!
     errors = []
 
-    errors << "Название  не может быть пустым" if @name.length.zero?
-    errors << "Название  должно иметь минимум 5 символов" if @name.length < 5
-    
-    raise errors.join(". ") if !errors.empty?
-  end
+    errors << 'Название  не может быть пустым' if @name.length.zero?
+    errors << 'Название  должно иметь минимум 5 символов' if @name.length < 5
 
+    raise errors.join('. ') unless errors.empty?
+  end
 end

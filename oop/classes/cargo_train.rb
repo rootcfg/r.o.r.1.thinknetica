@@ -1,5 +1,6 @@
-class CargoTrain < Train
+# frozen_string_literal: true
 
+class CargoTrain < Train
   attr_reader :max_tonnage
 
   def initialize(name, type = :platform)
@@ -9,9 +10,5 @@ class CargoTrain < Train
 
   def increase_wagons(wagon)
     super(wagon) if wagon.instance_of?(CargoWagon)
-  end
-
-  def decrease_wagons(wagon)
-    super(wagon)
   end
 end

@@ -1,9 +1,10 @@
-class Route
+# frozen_string_literal: true
 
+class Route
   include InstancesCounter
   attr_reader :stations, :name
 
-  STATION_FORMAT = /^\w{4,10}$/i
+  STATION_FORMAT = /^\w{4,10}$/i.freeze
 
   def initialize(begin_station, end_station)
     @begin_station = begin_station
@@ -15,15 +16,11 @@ class Route
   end
 
   def add_station(station)
-    if  !@stations.include? station
-      @stations.insert(-2, station)
-    end
+    @stations.insert(-2, station) unless @stations.include? station
   end
 
   def remove_station(station)
-    if @stations.include?(station) && @stations.size > 1
-      @stations.delete station
-    end
+    @stations.delete station if @stations.include?(station) && @stations.size > 1
   end
 
   def begin_station
@@ -43,7 +40,7 @@ class Route
   def valid?
     validate!
     true
-  rescue
+  rescue StandardError
     false
   end
 
@@ -53,9 +50,8 @@ class Route
     errors = []
 
     errors << 'Begin station can`t be blank`' if @begin_station.name.empty?
-    errors << 'End station can`t be blank`'    if @end_station.name.empty?
+    errors << 'End station can`t be blank`' if @end_station.name.empty?
 
-    raise errors.join(". ") if !errors.empty?
+    raise errors.join('. ') unless errors.empty?
   end
-
 end
