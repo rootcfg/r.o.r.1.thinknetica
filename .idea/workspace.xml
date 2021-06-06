@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da99aab8-520d-4d39-a588-e48fb350527c" name="Default Changelist" comment="">
+    <list default="true" id="da99aab8-520d-4d39-a588-e48fb350527c" name="Default Changelist" comment="Прошелся Рубокопом, криминала не обнаружено.">
+      <change afterPath="$PROJECT_DIR$/oop/classes/module_accessor.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/oop/classes/module_validate.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oop/classes/cargo_train.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/cargo_train.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oop/classes/cargo_wagon.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/cargo_wagon.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oop/classes/company.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/company.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oop/classes/instances_counter.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/instances_counter.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oop/classes/logger.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/logger.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oop/classes/main.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/main.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oop/classes/passenger_train.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/passenger_train.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oop/classes/passenger_wagon.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/passenger_wagon.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oop/classes/route.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/route.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oop/classes/station.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/station.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/oop/classes/train.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/train.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/oop/classes/wagon.rb" beforeDir="false" afterPath="$PROJECT_DIR$/oop/classes/wagon.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -68,7 +61,8 @@
       <workItem from="1622018108675" duration="30210000" />
       <workItem from="1622485604930" duration="3875000" />
       <workItem from="1622627216572" duration="36000" />
-      <workItem from="1622627277969" duration="319000" />
+      <workItem from="1622627277969" duration="1338000" />
+      <workItem from="1622981392544" duration="6602000" />
     </task>
     <task id="LOCAL-00001" summary="New syntax style correction">
       <created>1621664767630</created>
@@ -105,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622544852160</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Прошелся Рубокопом, криминала не обнаружено.">
+      <created>1622627689031</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1622627689031</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +118,7 @@
     <MESSAGE value="Add some exceptions + validations" />
     <MESSAGE value="Add some exceptions + validations 2" />
     <MESSAGE value="FInd some errors and bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="FInd some errors and bugs" />
+    <MESSAGE value="Прошелся Рубокопом, криминала не обнаружено." />
+    <option name="LAST_COMMIT_MESSAGE" value="Прошелся Рубокопом, криминала не обнаружено." />
   </component>
 </project>

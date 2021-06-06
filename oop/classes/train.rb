@@ -1,13 +1,19 @@
 # frozen_string_literal: true
 
 class Train
+
+  NUMBER_FORMAT = /^(\w|\d){3}-?(\w|\d){2}$/i.freeze
+
   include Company
   include InstancesCounter
+  include Validation
 
   attr_accessor :number, :name
   attr_reader :max_speed, :current_speed, :wagons, :type, :route, :current_station
 
-  NUMBER_FORMAT = /^(\w|\d){3}-?(\w|\d){2}$/i.freeze
+  validate :number, :presence
+  validate :number, :format, NUMBER_FORMAT
+  validate :number, :type, String
 
   @@all_trains = {}
 
@@ -67,24 +73,7 @@ class Train
     @wagons.each(&block)
   end
 
-  def valid?
-    validate!
-    true
-  rescue StandardError
-    false
-  end
-
   protected
-
-  def validate!
-    errors = []
-
-    errors << 'Номер  не может быть пустым' if @number.length.zero?
-    errors << 'Номер  должен иметь минимум 6 символов' if @number.length < 6
-    errors << 'Неверный формат номера ' if @number !~ NUMBER_FORMAT
-
-    raise errors.join('. ') unless errors.empty?
-  end
 
   def increase_wagons(wagon)
     @wagons.push(wagon) unless @wagons.include?(wagon)
