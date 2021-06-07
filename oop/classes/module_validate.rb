@@ -14,8 +14,14 @@ module Validation
   module InstanceMethods
 
     def validate!
-      self.class.instance_variable_get('@validates').each do |attrib, args|
-        send("validate_#{args[0]}", attrib, *args[1, args.size])
+      if self.class.superclass == Object
+        self.class.instance_variable_get('@validates').each do |attrib, args|
+          send("validate_#{args[0]}", attrib, *args[1, args.size])
+        end
+      else
+        self.class.superclass.instance_variable_get('@validates').each do |attrib, args|
+          send("validate_#{args[0]}", attrib, *args[1, args.size])
+        end
       end
       true
     end
