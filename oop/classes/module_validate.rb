@@ -5,9 +5,9 @@ module Validation
   end
 
   module ClassMethods
-    def validate(attrib, *args)
-      @validates ||= {}
-      @validates[attrib] = *args
+    def validate(name, *args)
+      @validates ||= []
+      @validates << {attrib: name, args: args}
     end
   end
 
@@ -15,12 +15,12 @@ module Validation
 
     def validate!
       if self.class.superclass == Object
-        self.class.instance_variable_get('@validates').each do |attrib, args|
-          send("validate_#{args[0]}", attrib, *args[1, args.size])
+        self.class.instance_variable_get('@validates').each do |attrib|
+          send("validate_#{attrib[:args][0].to_s}", attrib)
         end
       else
-        self.class.superclass.instance_variable_get('@validates').each do |attrib, args|
-          send("validate_#{args[0]}", attrib, *args[1, args.size])
+        self.class.superclass.instance_variable_get('@validates').each do |attrib|
+          send("validate_#{attrib[:args][0].to_s}", attrib)
         end
       end
       true
@@ -35,20 +35,23 @@ module Validation
 
     private
 
-    def validate_presence(attrib, *args)
-      value = instance_variable_get("@#{attrib}")
-      puts value
+    def validate_presence(attributes)
+      value = instance_variable_get("@#{attributes[:attrib]}")
       fail ArgumentError if value.nil?
     end
 
-    def validate_format(attrib, format, message='Invalid format')
-      value = instance_variable_get("@#{attrib}")
-      fail ArgumentError, message unless value =~ format
+    def validate_format(attributes)
+      message='Invalid type'
+      value = instance_variable_get("@#{attributes[:attrib]}")
+      fail ArgumentError, message unless value =~ attributes[:args][1]
     end
 
-    def validate_type(attrib, type, message='Invalid type')
-      value = instance_variable_get("@#{attrib}")
-      fail ArgumentError, message unless value.instance_of?(type)
+    def validate_type(attributes)
+      message='Invalid type'
+      value = instance_variable_get("@#{attributes[:attrib]}")
+      fail ArgumentError, message unless value.instance_of?(attributes[:attrib].to_s.class)
     end
   end
 end
+
+#[{:attrib=>:number, :args=>[:presence]}, {:attrib=>:number, :args=>[:format, /^(\w|\d){3}-?(\w|\d){2}$/i]}, {:attrib=>:number, :args=>[:type, String]}]
