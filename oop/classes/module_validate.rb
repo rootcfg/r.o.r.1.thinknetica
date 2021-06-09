@@ -41,7 +41,7 @@ module Validation
     end
 
     def validate_format(attributes)
-      message='Invalid type'
+      message='Invalid format'
       value = instance_variable_get("@#{attributes[:attrib]}")
       fail ArgumentError, message unless value =~ attributes[:args][1]
     end
@@ -51,7 +51,17 @@ module Validation
       value = instance_variable_get("@#{attributes[:attrib]}")
       fail ArgumentError, message unless value.instance_of?(attributes[:attrib].to_s.class)
     end
+
+    def validate_length_min(attributes)
+      message="Invalid length. Must be greater than #{attributes[:args][1]}"
+      value = instance_variable_get("@#{attributes[:attrib]}")
+      fail ArgumentError, message if value.length < attributes[:args][1]
+    end
+
+    def validate_length_max(attributes)
+      message="Invalid length. Must be lower than #{attributes[:args][1]}"
+      value = instance_variable_get("@#{attributes[:attrib]}")
+      fail ArgumentError, message if value.length > attributes[:args][1]
+    end
   end
 end
-
-#[{:attrib=>:number, :args=>[:presence]}, {:attrib=>:number, :args=>[:format, /^(\w|\d){3}-?(\w|\d){2}$/i]}, {:attrib=>:number, :args=>[:type, String]}]

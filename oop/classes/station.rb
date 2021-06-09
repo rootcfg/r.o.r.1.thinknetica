@@ -1,10 +1,16 @@
 # frozen_string_literal: true
 
 class Station
+
   include InstancesCounter
+  include Validation
 
   attr_accessor :name
   attr_reader :trains
+
+  validate :name, :presence
+  validate :name, :length_min, 5
+  validate :name, :length_max, 10
 
   @@all_stations = []
 
@@ -43,14 +49,4 @@ class Station
     @trains.each(&block)
   end
 
-  private
-
-  def validate!
-    errors = []
-
-    errors << 'Название  не может быть пустым' if @name.length.zero?
-    errors << 'Название  должно иметь минимум 5 символов' if @name.length < 5
-
-    raise errors.join('. ') unless errors.empty?
-  end
 end
